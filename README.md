@@ -1,2 +1,2 @@
 - grooth/ directory has the Flutter Code for the GroOath App.
-- jupyter/ directory has the Jupiter Notebook file
+- crop-analysis-and-prediction.ipynb is the Jupiter Notebook file
