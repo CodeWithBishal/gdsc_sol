@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Grooth',
+      title: 'GroOth',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -35,13 +35,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late ArCoreController arCoreController;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Hello World'),
+          title: const Text('GroOth'),
         ),
         body: ArCoreView(
           onArCoreViewCreated: _onArCoreViewCreated,
@@ -53,11 +52,14 @@ class _HomePageState extends State<HomePage> {
   void _onArCoreViewCreated(ArCoreController controller) {
     arCoreController = controller;
 
-    _addPlant(arCoreController);
+    _addSphere(arCoreController);
+    _addCylindre(arCoreController);
+    _addCube(arCoreController);
   }
 
-  void _addPlant(ArCoreController controller) {
-    final material = ArCoreMaterial(color: Color.fromARGB(120, 66, 134, 244));
+  void _addSphere(ArCoreController controller) {
+    final material =
+        ArCoreMaterial(color: const Color.fromARGB(120, 66, 134, 244));
     final sphere = ArCoreSphere(
       materials: [material],
       radius: 0.1,
@@ -65,6 +67,39 @@ class _HomePageState extends State<HomePage> {
     final node = ArCoreNode(
       shape: sphere,
       position: vector.Vector3(0, 0, -1.5),
+    );
+    controller.addArCoreNode(node);
+  }
+
+  void _addCylindre(ArCoreController controller) {
+    final material = ArCoreMaterial(
+      color: Colors.red,
+      reflectance: 1.0,
+    );
+    final cylindre = ArCoreCylinder(
+      materials: [material],
+      radius: 0.5,
+      height: 0.3,
+    );
+    final node = ArCoreNode(
+      shape: cylindre,
+      position: vector.Vector3(0.0, -0.5, -2.0),
+    );
+    controller.addArCoreNode(node);
+  }
+
+  void _addCube(ArCoreController controller) {
+    final material = ArCoreMaterial(
+      color: const Color.fromARGB(120, 66, 134, 244),
+      metallic: 1.0,
+    );
+    final cube = ArCoreCube(
+      materials: [material],
+      size: vector.Vector3(0.5, 0.5, 0.5),
+    );
+    final node = ArCoreNode(
+      shape: cube,
+      position: vector.Vector3(-0.5, 0.5, -3.5),
     );
     controller.addArCoreNode(node);
   }
