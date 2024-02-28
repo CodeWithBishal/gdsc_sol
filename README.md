@@ -1,6 +1,6 @@
 - grooth/ directory has the Flutter Code for the GroOath App.
 - crop-analysis-and-prediction.ipynb is the Jupiter Notebook file
-
+- arduino/ contains the code for arduino/hardware part of the project
 
 Hey 👋, 
 
